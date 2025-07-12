@@ -1,4 +1,6 @@
-/node_module
-./node_module
-node_module
-.node_module
+# .gitignore
+node_modules/
+.cache/
+dist/
+build/
+*.log

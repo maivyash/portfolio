@@ -7,4 +7,5 @@
 
 .circular-gallery:active {
   cursor: grabbing;
+  color: #498fb2;
 }
