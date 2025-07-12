@@ -1,0 +1,15 @@
+.cursor {
+  display: inline-block;
+  width: 1ch;
+  animation: blink 0.8s infinite;
+  color: #00ff89;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
