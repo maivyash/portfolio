@@ -99,6 +99,14 @@ function App() {
               >
                 View GitHub
               </button>
+              <button
+                className="btn-primary"
+                onClick={() => {
+                  window.open("https://github.com/maivyash");
+                }}
+              >
+                View Resume
+              </button>
             </div>
           </div>
           <img src={image} alt="Coding" className="hero-image" />

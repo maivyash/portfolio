@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 
 const LetterGlitch = ({
   children,
-  glitchColors = ["#2b4539", "#61dca3", "#ffffff"],
+  glitchColors = ["#2b4539", "#61dca3", "#61b3dc"],
   className = "",
   glitchSpeed = 50,
   centerVignette = false,
@@ -271,7 +271,7 @@ const LetterGlitch = ({
     height: "100%",
     zIndex: 0, // ✅ stays behind everything
     pointerEvents: "none",
-    backgroundColor: "#000",
+    backgroundColor: "#06202B",
   };
 
   const canvasStyle = {
