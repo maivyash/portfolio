@@ -1,21 +1,60 @@
-import logo from "./logo.svg";
+// import logo from "./logo.svg";
 import "./App.css";
-import LetterGlitch from "./tools/Background";
+// import LetterGlitch from "./tools/Background";
 import TypingText from "./tools/TerminalTypingEffect";
-import image from "./asset/mainhero.jpg";
-import sticker from "./asset/aboutsticker.png";
+// import image from "./asset/mainhero.jpg";
+import profileImage from "./asset/aboutsticker.png";
 import { FaGithub } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
-import CircularGallery from "./tools/CircularGallery";
-import SpotlightCard from "./tools/SpotlightCard";
-import SplashCursor from "./tools/SplashCursor";
-import PixelCard from "./tools/PixelCard";
+// import CircularGallery from "./tools/CircularGallery";
+// import SpotlightCard from "./tools/SpotlightCard";
+// import SplashCursor from "./tools/SplashCursor";
+// import PixelCard from "./tools/PixelCard";
 import ppthandlerprojectimagefrom from "./asset/ppthandler.png";
 import healthhubprojectimagefrom from "./asset/healthhubss.png";
 import collegesurferprojectimagefrom from "./asset/collegesurfer.png";
 import Dock from "./tools/Dock";
 import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope } from "react-icons/fa";
+import { useRef } from "react";
+import useInView from "./tools/useInView";
+// import { IconCloud } from "./tools/logoCloud";
+// import TechMarquee from "./tools/techMarquee";
+// import Squares from "./tools/Backgrounds/Squares/Squares";
+import VideoKrishna from "./asset/krishna.mp4";
+import ChromaGrid from "./tools/Components/ChromaGrid/ChromaGrid";
 
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
 function App() {
   const skillImages = [
     {
@@ -73,225 +112,275 @@ function App() {
           .scrollIntoView({ behavior: "smooth" }),
     },
   ];
+
+  function SectionWrapper({ children }) {
+    const ref = useRef();
+    useInView(ref, "0px 0px -20% 0px"); // triggers slightly before fully visible
+    return (
+      <div ref={ref} className="animate-item">
+        {children}
+      </div>
+    );
+  }
+
+  // Usage in sections:
+
   return (
     <>
-      <SplashCursor />
-
-      <LetterGlitch
-        glitchSpeed={50}
-        centerVignette={true}
-        outerVignette={false}
-        smooth={true}
-      />
       <main className="homepage">
-        <section id="hero" className="hero">
-          <div className="hero-text">
-            <h1>
-              Hi, I'm <span className="highlight">Yash Gupta</span>
-            </h1>
-            <TypingText />
-            <div className="hero-buttons">
-              <button
-                className="btn-primary"
-                onClick={() => {
-                  window.open("https://github.com/maivyash");
-                }}
-              >
-                View GitHub
-              </button>
-              <button
-                className="btn-primary"
-                onClick={() => {
-                  window.open("https://github.com/maivyash");
-                }}
-              >
-                View Resume
-              </button>
-            </div>
-          </div>
-          <img src={image} alt="Coding" className="hero-image" />
-        </section>
-
-        <section id="about" className="about">
-          <h2>About Me</h2>
-          <div className="about-content">
-            <div className="about-image">
-              <img src={sticker} alt="About" />
-            </div>
-            <div>
-              <h3>Computer Science Engineering Student</h3>
-              <p>
-                I’m a Third year Computer Science student... passionate about
-                solving complex problems and building impactful applications.
-              </p>
-              <ul className="about-list">
-                <li>BTech in Computer Science</li>
-                <li>Pune, India</li>
-                <li>Hindi, English</li>
-              </ul>
-              <div className="social-icons">
-                <FaGithub
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://github.com/maivyash");
-                  }}
-                />
-                <FaLinkedin
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://www.linkedin.com/in/maivyash/");
-                  }}
-                />
+        <SectionWrapper>
+          <section id="hero" className="hero iconcloud-wrapper">
+            <div className="hero-text-inside-cloud">
+              <h1>
+                Hi, I'm <span className="highlight">Yash Gupta</span>
+              </h1>
+              <TypingText />
+              <div className="hero-buttons">
+                <button
+                  className="btn-primary"
+                  onClick={() => window.open("https://github.com/maivyash")}
+                >
+                  View GitHub
+                </button>
+                <button
+                  className="btn-primary"
+                  onClick={() =>
+                    window.open(
+                      "https://drive.google.com/file/d/1HKb198rHI-jf5q5FUDThnnwFoMLl4uYj/view?usp=sharing"
+                    )
+                  }
+                >
+                  View Resume
+                </button>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </SectionWrapper>
 
-        <section id="skills" className="skills">
-          <h2>My Skills</h2>
-          <div className="skills-content">
-            <div className="skills-bars">
+        <SectionWrapper>
+          <section id="about" className="about-container">
+            <div className="about-left">
+              <img src={profileImage} alt="Yash Gupta" className="avatar" />
+              <h2>Yash Gupta</h2>
+              <p className="subtitle">Aspiring Software Engineer</p>
+            </div>
+
+            <div className="about-right">
+              <div className="card">
+                <h3>About Me</h3>
+                <p>
+                  I'm a computer science student passionate about creating
+                  impactful software. I enjoy working across the stack—from
+                  frontend interfaces to backend logic and cloud deployment.
+                  <br />
+                  <br />
+                  I’ve worked with tools, frameworks, and platforms across Web,
+                  Mobile, Marketing, Cloud, and DevOps.
+                </p>
+              </div>
+
+              <div className="card">
+                <h3>Skills</h3>
+                <div className="skills-grid">
+                  <div>
+                    <h4>Languages & Frameworks</h4>
+                    <p>
+                      Python, JavaScript, TypeScript, Dart, Go, PHP, .NET,
+                      ReactJS, NextJS, Flutter, NodeJS, jQuery
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Tools & SDKs</h4>
+                    <p>
+                      GitHub, Firebase, Shopify, WordPress, Agora, HubSpot,
+                      Zeplin, Figma, Postman, Slack, Trello, ClickUp, Zoho CRM,
+                      Zendesk
+                    </p>
+                  </div>
+                  <div>
+                    <h4>DevOps & Cloud</h4>
+                    <p>
+                      Docker, Kubernetes, Nginx, DNS, CI/CD, AWS, Google Cloud,
+                      Azure, Vercel, Netlify, Heroku, Cloudflare
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Marketing & Analytics</h4>
+                    <p>
+                      Google Ads, Analytics, Trends, Data Studio, GoHighLevel,
+                      SEM Rush, Meta Ads, SEO, SEM, Social Media Marketing
+                    </p>
+                  </div>
+                  <div>
+                    <h4>Project Management</h4>
+                    <p>Jira, Asana, Miro</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="card">
+                <h3>Education</h3>
+                <div className="timeline">
+                  <div className="timeline-item">
+                    <div className="dot"></div>
+                    <div className="timeline-content">
+                      <h4>10th Board</h4>
+                      <span>SSC Maharastra • Jalna, India</span>
+                      <p>2021 COMPLETED</p>
+                    </div>
+                  </div>
+                  <div className="timeline-item">
+                    <div className="dot"></div>
+                    <div className="timeline-content">
+                      <h4>Diploma in Computer Engineering</h4>
+                      <span>MSBTE • Gondia, India</span>
+                      <p>2021 - 2024</p>
+                    </div>
+                  </div>
+                  <div className="timeline-item">
+                    <div className="dot"></div>
+                    <div className="timeline-content">
+                      <h4>Bachelor of Technology (CSE)</h4>
+                      <span>Pune University • Pune, India</span>
+                      <p>2024 - 2027</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </SectionWrapper>
+
+        <SectionWrapper>
+          <section id="projects" className="projects redesigned-projects">
+            <h2 className="section-title">Featured Projects</h2>
+            <p className="section-subtitle">
+              A selection of projects that highlight my skills and experience in
+              software development.
+            </p>
+
+            <div className="project-card-grid">
               {[
-                { name: "JavaScript/TypeScript", percent: 90 },
-                { name: "Python", percent: 85 },
-                { name: "Java", percent: 80 },
-                { name: "HTML/CSS", percent: 95 },
-                { name: "SQL", percent: 75 },
-              ].map((skill) => (
-                <div key={skill.name}>
-                  <p>{skill.name}</p>
-                  <div className="bar">
-                    <div
-                      className="fill"
-                      style={{ width: `${skill.percent}%` }}
-                    ></div>
+                {
+                  title: "HealthHub",
+                  description:
+                    "A full-stack AI powered website with medical report tracking, doctor booking, and AI assistant integration.",
+                  image: healthhubprojectimagefrom,
+                  source: "https://github.com/maivyash/healthhub",
+                  demo: "https://healthhub-zeta.vercel.app/",
+                },
+                {
+                  title: "PPT Handler",
+                  description:
+                    "AI-based gesture recognition tool that lets you control PowerPoint presentations hands-free.",
+                  image: ppthandlerprojectimagefrom,
+                  source: "https://github.com/maivyash/PPT_HANDLER",
+                  demo: "#",
+                },
+                {
+                  title: "CollegeSurfer",
+                  description:
+                    "Mobile app for managing college operations — attendance, assignments, profiles, and notices.",
+                  image: collegesurferprojectimagefrom,
+                  source: "https://github.com/maivyash/CollegeSurfer",
+                  demo: "#",
+                },
+              ].map((project) => (
+                <div className="project-card" key={project.title}>
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="project-img"
+                  />
+                  <div className="project-info">
+                    <h3>{project.title}</h3>
+                    <p>{project.description}</p>
+                    <div className="project-links">
+                      <a href={project.source} target="_blank" rel="noreferrer">
+                        Source Code
+                      </a>
+                      <a href={project.demo} target="_blank" rel="noreferrer">
+                        Demo
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-
-            <div className="expertise-boxes">
-              <SpotlightCard
-                className="custom-spotlight-card"
-                spotlightColor="rgba(255, 191, 64, 0.2)"
-              >
-                <div>WebDeveloper</div>
-              </SpotlightCard>
-              <SpotlightCard
-                className="custom-spotlight-card"
-                spotlightColor="rgba(24, 232, 255, 0.2)"
-              >
-                <div>Machine Learning</div>
-              </SpotlightCard>
-              <SpotlightCard
-                className="custom-spotlight-card"
-                spotlightColor="rgba(58, 255, 51, 0.2)"
-              >
-                <div>Mobile Development</div>
-              </SpotlightCard>
-              <SpotlightCard
-                className="custom-spotlight-card"
-                spotlightColor="rgba(254, 49, 247, 0.2)"
-              >
-                <div>Cloud Computing</div>
-              </SpotlightCard>
-            </div>
-          </div>
-          <div className="circular-gallery-container">
-            <CircularGallery items={skillImages} bend={0} borderRadius={0.05} />
-          </div>
-        </section>
-
-        <section id="projects" className="projects">
-          <h2>My Projects</h2>
-          <div className="project-cards">
-            <PixelCard variant="blue" className="project-pixel-card">
-              <div className="project-card-content">
-                <img src={ppthandlerprojectimagefrom} />
-                <h3>AI hand Gesture Presentation</h3>
-                <p>A model that identifies Gestures with high accuracy.</p>
-                <div className="card-links">
-                  <a href="https://github.com/maivyash/PPT_HANDLER">
-                    Source Code
-                  </a>
-
-                  <a href="#">Demo</a>
-                </div>
-              </div>
-            </PixelCard>
-
-            <PixelCard variant="yellow" className="project-pixel-card">
-              <div className="project-card-content">
-                <img src={healthhubprojectimagefrom} />
-                <h3>HealthHub</h3>
-                <p>
-                  A full-stack AI powered website with Medical Track And AI
-                  Assistance.
-                </p>
-                <div className="card-links">
-                  <a href="https://github.com/maivyash/healthhub">
-                    Source Code
-                  </a>
-                  <a href="https://healthhub-zeta.vercel.app/">Demo</a>
-                </div>
-              </div>
-            </PixelCard>
-
-            <PixelCard variant="pink" className="project-pixel-card">
-              <div className="project-card-content">
-                <img src={collegesurferprojectimagefrom} />
-                <h3>CollegeSurfer</h3>
-                <p>A mobile app Manage Each College Functions .</p>
-                <div className="card-links">
-                  <a href="https://github.com/maivyash/CollegeSurfer">
-                    Source Code
-                  </a>
-                  <a href="#">Demo</a>
-                </div>
-              </div>
-            </PixelCard>
-          </div>
-        </section>
-
-        <section id="contact" className="contact">
-          <h2>Get In Touch</h2>
-          <div className="contact-content">
-            <div className="contact-info">
-              <p>Email: guptayash2005.yg@gmail.com</p>
-              <p>Phone: +91 8767339461</p>
-              <p>Location: Pune, India</p>
-              <div className="social-icons">
-                <FaLinkedin
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://www.linkedin.com/in/maivyash/");
-                  }}
-                />
-                <FaGithub
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://github.com/maivyash");
-                  }}
-                />
+          </section>
+        </SectionWrapper>
+        <SectionWrapper>
+          <section className="gita-section">
+            <div className="video-overlay">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="gita-video"
+                src={VideoKrishna} // or wherever your file is
+              ></video>
+              <div className="gita-text">
+                <h1 className="fade-in-line1">
+                  Karmanye vadhikaraste ma phaleshu kadachana,
+                  <br />
+                  Ma karma phala hetur bhur ma te sango’stvakarmani.
+                </h1>
+                <h3 className="fade-in-line2">
+                  You have a right to perform your duties, but you are not
+                  entitled to the fruits of your actions.
+                  <br />
+                  Do not let the fruits of action be your motive, nor let your
+                  attachment be to inaction.
+                </h3>
+                <p className="fade-in-line3">— Bhagavad Gita 2.47</p>
               </div>
             </div>
-            <form className="contact-form">
-              <input type="text" placeholder="Name" />
-              <input type="email" placeholder="Email" />
-              <input type="text" placeholder="Subject" />
-              <textarea placeholder="Message"></textarea>
-              <button className="btn-primary">Send Message</button>
-            </form>
-          </div>
-        </section>
+          </section>
+        </SectionWrapper>
+
+        <SectionWrapper>
+          <section id="contact" className="contact">
+            <h2>Get In Touch</h2>
+            <div className="contact-content">
+              <div className="contact-info">
+                <p>Email: guptayash2005.yg@gmail.com</p>
+                <p>Phone: +91 8767339461</p>
+                <p>Location: Pune, India</p>
+                <div className="social-icons">
+                  <FaLinkedin
+                    size={"1.7rem"}
+                    onClick={() => {
+                      window.open("https://www.linkedin.com/in/maivyash/");
+                    }}
+                  />
+                  <FaGithub
+                    size={"1.7rem"}
+                    onClick={() => {
+                      window.open("https://github.com/maivyash");
+                    }}
+                  />
+                </div>
+              </div>
+              <form className="contact-form">
+                <input type="text" placeholder="Name" />
+                <input type="email" placeholder="Email" />
+                <input type="text" placeholder="Subject" />
+                <textarea placeholder="Message"></textarea>
+                <button className="btn-primary">Send Message</button>
+              </form>
+            </div>
+          </section>
+        </SectionWrapper>
         <footer className="footer">
           © 2025 Yash Gupta. All rights reserved.
         </footer>
+
         <Dock
           items={items}
-          panelHeight={68}
-          baseItemSize={50}
-          magnification={70}
+          panelHeight={40}
+          baseItemSize={30}
+          magnification={50}
         />
       </main>
     </>

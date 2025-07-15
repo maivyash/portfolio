@@ -119,14 +119,9 @@ export default function Dock({
     () => Math.max(dockHeight, magnification + magnification / 2 + 4),
     [magnification, dockHeight]
   );
-  const heightRow = useTransform(isHovered, [0, 1], [panelHeight, maxHeight]);
-  const height = useSpring(heightRow, spring);
 
   return (
-    <motion.div
-      style={{ height, scrollbarWidth: "none" }}
-      className="dock-outer"
-    >
+    <motion.div className="dock-outer">
       <motion.div
         onMouseMove={({ pageX }) => {
           isHovered.set(1);

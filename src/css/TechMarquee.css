@@ -1,0 +1,46 @@
+.marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100vw;
+    background-color: transparent;
+  padding: 1rem 0;
+  
+}
+
+.marquee__inner {
+  display: flex;
+  width: 100vw;
+  animation: scroll 7s linear infinite;
+}
+
+.marquee__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2rem;
+  min-width: 120px;
+  
+}
+
+.marquee__item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 4px rgba(0,0,0,0.1));
+}
+
+.marquee__item span {
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

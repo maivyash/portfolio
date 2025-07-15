@@ -271,7 +271,7 @@ const LetterGlitch = ({
     height: "100%",
     zIndex: 0, // ✅ stays behind everything
     pointerEvents: "none",
-    backgroundColor: "#06202B",
+    backgroundColor: "#131D4F",
   };
 
   const canvasStyle = {

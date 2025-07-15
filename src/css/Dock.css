@@ -1,16 +1,18 @@
 .dock-outer {
-  margin: 0 0.5rem;
+  position: fixed; /* <-- MAKE IT FIXED */
+  bottom: 1rem;     /* <-- align to bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;    /* ensure on top of all */
   display: flex;
   max-width: 100%;
   align-items: center;
-  z-index: 20;
+  pointer-events: auto; /* ensure it's clickable */
 }
 
+
 .dock-panel {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative; /* not absolute anymore */
   display: flex;
   align-items: flex-end;
   width: fit-content;
@@ -19,8 +21,9 @@
   background-color: #060010;
   border: 1px solid #222;
   padding: 0 0.5rem 0.5rem;
-    z-index: 5;
+  z-index: 9999;
 }
+
 
 .dock-item {
   position: relative;
