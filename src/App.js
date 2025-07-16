@@ -163,6 +163,20 @@ function App() {
               <img src={profileImage} alt="Yash Gupta" className="avatar" />
               <h2>Yash Gupta</h2>
               <p className="subtitle">Aspiring Software Engineer</p>
+              <div className="social-icons">
+                <FaLinkedin
+                  size={"1.7rem"}
+                  onClick={() => {
+                    window.open("https://www.linkedin.com/in/maivyash/");
+                  }}
+                />
+                <FaGithub
+                  size={"1.7rem"}
+                  onClick={() => {
+                    window.open("https://github.com/maivyash");
+                  }}
+                />
+              </div>
             </div>
 
             <div className="about-right">
@@ -275,7 +289,7 @@ function App() {
                     "AI-based gesture recognition tool that lets you control PowerPoint presentations hands-free.",
                   image: ppthandlerprojectimagefrom,
                   source: "https://github.com/maivyash/PPT_HANDLER",
-                  demo: "#",
+                  demo: null,
                 },
                 {
                   title: "CollegeSurfer",
@@ -283,7 +297,7 @@ function App() {
                     "Mobile app for managing college operations — attendance, assignments, profiles, and notices.",
                   image: collegesurferprojectimagefrom,
                   source: "https://github.com/maivyash/CollegeSurfer",
-                  demo: "#",
+                  demo: null,
                 },
               ].map((project) => (
                 <div className="project-card" key={project.title}>
@@ -299,9 +313,13 @@ function App() {
                       <a href={project.source} target="_blank" rel="noreferrer">
                         Source Code
                       </a>
-                      <a href={project.demo} target="_blank" rel="noreferrer">
-                        Demo
-                      </a>
+                      {project.demo != null ? (
+                        <a href={project.demo} target="_blank" rel="noreferrer">
+                          Demo
+                        </a>
+                      ) : (
+                        false
+                      )}
                     </div>
                   </div>
                 </div>
