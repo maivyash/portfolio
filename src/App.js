@@ -15,7 +15,7 @@ import healthhubprojectimagefrom from "./asset/healthhubss.png";
 import collegesurferprojectimagefrom from "./asset/collegesurfer.png";
 import Dock from "./tools/Dock";
 import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope } from "react-icons/fa";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useInView from "./tools/useInView";
 // import { IconCloud } from "./tools/logoCloud";
 // import TechMarquee from "./tools/techMarquee";
@@ -56,6 +56,44 @@ const slugs = [
   "figma",
 ];
 function App() {
+  //
+  //contact
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const response = await fetch("https://formspree.io/f/mvgqoypz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Failed to send. Try again.");
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus("Error sending message.");
+    }
+  };
+  //contact
   const skillImages = [
     {
       image: "https://img.icons8.com/color/96/javascript.png",
@@ -380,12 +418,42 @@ function App() {
                   />
                 </div>
               </div>
-              <form className="contact-form">
-                <input type="text" placeholder="Name" />
-                <input type="email" placeholder="Email" />
-                <input type="text" placeholder="Subject" />
-                <textarea placeholder="Message"></textarea>
-                <button className="btn-primary">Send Message</button>
+              <form onSubmit={handleSubmit} className="contact-form">
+                <label>
+                  Name:
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  Email:
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <label>
+                  Message:
+                  <textarea
+                    name="message"
+                    required
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </label>
+
+                <button type="submit">Send</button>
+
+                <p>{status}</p>
               </form>
             </div>
           </section>
