@@ -184,7 +184,7 @@ function App() {
                   className="btn-primary"
                   onClick={() =>
                     window.open(
-                      "https://drive.google.com/file/d/1HKb198rHI-jf5q5FUDThnnwFoMLl4uYj/view?usp=sharing"
+                      "https://drive.google.com/file/d/1akawk6mhbgSX27S6aDK_DDdjXnf1EPKE/view?usp=sharing"
                     )
                   }
                 >
