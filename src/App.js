@@ -71,6 +71,9 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
     setStatus("Sending...");
 
     try {
@@ -92,6 +95,8 @@ function App() {
       console.error(error);
       setStatus("Error sending message.");
     }
+    
+    return false; // Additional safeguard
   };
   //contact
   const skillImages = [
@@ -395,7 +400,7 @@ function App() {
           </section>
         </SectionWrapper>
 
-        <SectionWrapper>
+        <div>
           <section id="contact" className="contact">
             <h2>Get In Touch</h2>
             <div className="contact-content">
@@ -418,7 +423,16 @@ function App() {
                   />
                 </div>
               </div>
-              <form onSubmit={handleSubmit} className="contact-form">
+              <form 
+                onSubmit={handleSubmit} 
+                className="contact-form" 
+                noValidate
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && e.target.type !== 'textarea') {
+                    e.preventDefault();
+                  }
+                }}
+              >
                 <label>
                   Name:
                   <input
@@ -457,7 +471,7 @@ function App() {
               </form>
             </div>
           </section>
-        </SectionWrapper>
+        </div>
         <footer className="footer">
           © 2025 Yash Gupta. All rights reserved.
         </footer>
