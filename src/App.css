@@ -264,6 +264,179 @@ body, html {
   }
 }
 
+/* Education Tree (alternating timeline) */
+.education-tree {
+  position: relative;
+  margin-top: 1rem;
+  padding: 1.5rem 0;
+}
+
+.education-tree .tree-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, rgba(56,189,248,0.2), #38bdf8, rgba(56,189,248,0.2));
+  transform: translateX(-50%);
+  filter: drop-shadow(0 0 4px rgba(56,189,248,0.6));
+}
+
+.education-tree .tree-node {
+  position: relative;
+  width: 50%;
+  padding: 0.75rem 1rem;
+  box-sizing: border-box;
+  animation: slideUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.education-tree .tree-node.left {
+  padding-right: 2.5rem;
+  text-align: right;
+}
+
+.education-tree .tree-node.right {
+  margin-left: 50%;
+  padding-left: 2.5rem;
+  text-align: left;
+}
+
+.education-tree .tree-node::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 24px;
+  height: 2px;
+  background: #38bdf8;
+}
+
+.education-tree .tree-node.left::before {
+  right: -2px;
+}
+
+.education-tree .tree-node.right::before {
+  left: -2px;
+}
+
+.education-tree .tree-node-content {
+  display: inline-flex;
+  gap: 0.8rem;
+  align-items: center;
+  background: radial-gradient(120px 60px at var(--bg-x, 30%) 50%, rgba(56,189,248,0.12), rgba(30,41,59,0.6));
+  border: 1px solid rgba(56,189,248,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 0 20px rgba(56,189,248,0.08);
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  position: relative;
+  backdrop-filter: blur(6px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.education-tree .tree-node-content:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.45), inset 0 0 30px rgba(56,189,248,0.12);
+  border-color: rgba(56,189,248,0.45);
+}
+
+.education-tree .tree-icon {
+  flex: 0 0 auto;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  color: #0b1220;
+  background: conic-gradient(from 180deg at 50% 50%, #38bdf8, #34d399, #60a5fa, #38bdf8);
+  border-radius: 999px;
+  box-shadow: 0 0 0 2px rgba(8,145,178,0.4), 0 6px 16px rgba(56,189,248,0.4);
+  animation: spinPulse 4s linear infinite;
+}
+
+@keyframes spinPulse {
+  0% { filter: hue-rotate(0deg) brightness(1); }
+  50% { filter: hue-rotate(30deg) brightness(1.15); }
+  100% { filter: hue-rotate(0deg) brightness(1); }
+}
+
+.education-tree .tree-text h4 {
+  margin: 0;
+  color: #facc15;
+  font-size: 1rem;
+}
+
+.education-tree .tree-text span {
+  display: block;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.education-tree .tree-text p {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: #cbd5e1;
+}
+
+/* Connector nodes glow */
+.education-tree .tree-node.left .tree-node-content::after,
+.education-tree .tree-node.right .tree-node-content::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  width: 10px;
+  height: 10px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(56,189,248,0.9), 0 0 18px rgba(56,189,248,0.5);
+}
+
+.education-tree .tree-node.left .tree-node-content::after {
+  right: -31px;
+}
+
+.education-tree .tree-node.right .tree-node-content::after {
+  left: -31px;
+}
+
+/* Animated flow along the spine */
+.education-tree .tree-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 6px;
+  height: 24px;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #7dd3fc 0%, rgba(125,211,252,0.0) 70%);
+  filter: blur(2px);
+  animation: descend 3s ease-in-out infinite;
+}
+
+@keyframes descend {
+  0% { top: 0; opacity: 1; }
+  50% { opacity: 0.7; }
+  100% { top: 100%; opacity: 0.2; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .education-tree .tree-node,
+  .education-tree .tree-node.right {
+    width: 100%;
+    margin-left: 0;
+    text-align: left;
+    padding: 0.5rem 0 0.5rem 2.5rem;
+  }
+  .education-tree .tree-node.left::before,
+  .education-tree .tree-node.right::before {
+    left: calc(50% - 1px);
+    width: 0;
+  }
+  .education-tree .tree-node-content::after {
+    left: calc(50% - 5px) !important;
+    right: auto !important;
+  }
+}
+
 
 /* Skills Section */
 .skills-content {

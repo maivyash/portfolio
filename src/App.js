@@ -14,7 +14,7 @@ import ppthandlerprojectimagefrom from "./asset/ppthandler.png";
 import healthhubprojectimagefrom from "./asset/healthhubss.png";
 import collegesurferprojectimagefrom from "./asset/collegesurfer.png";
 import Dock from "./tools/Dock";
-import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope } from "react-icons/fa";
+import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope, FaGraduationCap, FaSchool, FaUniversity } from "react-icons/fa";
 import { useRef, useState } from "react";
 import useInView from "./tools/useInView";
 // import { IconCloud } from "./tools/logoCloud";
@@ -116,6 +116,26 @@ function App() {
     { image: "https://img.icons8.com/color/96/nodejs.png", text: "Node.js" },
     { image: "https://img.icons8.com/color/96/firebase.png", text: "Firebase" },
     { image: "https://img.icons8.com/color/96/docker.png", text: "Docker" },
+  ];
+  const educationData = [
+    {
+      title: "10th Board",
+      place: "SSC Maharastra • Jalna, India",
+      period: "2021 COMPLETED",
+      icon: <FaSchool size={20} />,
+    },
+    {
+      title: "Diploma in Computer Engineering",
+      place: "MSBTE • Gondia, India",
+      period: "2021 - 2024",
+      icon: <FaGraduationCap size={20} />,
+    },
+    {
+      title: "Bachelor of Technology (CSE)",
+      place: "Pune University • Pune, India",
+      period: "2024 - 2027",
+      icon: <FaUniversity size={20} />,
+    },
   ];
   const items = [
     {
@@ -277,31 +297,24 @@ function App() {
 
               <div className="card">
                 <h3>Education</h3>
-                <div className="timeline">
-                  <div className="timeline-item">
-                    <div className="dot"></div>
-                    <div className="timeline-content">
-                      <h4>10th Board</h4>
-                      <span>SSC Maharastra • Jalna, India</span>
-                      <p>2021 COMPLETED</p>
+                <div className="education-tree">
+                  <div className="tree-line"></div>
+                  {educationData.map((edu, idx) => (
+                    <div
+                      className={`tree-node ${idx % 2 === 0 ? "left" : "right"}`}
+                      key={edu.title}
+                      style={{ animationDelay: `${0.2 + idx * 0.2}s` }}
+                    >
+                      <div className="tree-node-content">
+                        <div className="tree-icon">{edu.icon}</div>
+                        <div className="tree-text">
+                          <h4>{edu.title}</h4>
+                          <span>{edu.place}</span>
+                          <p>{edu.period}</p>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div className="timeline-item">
-                    <div className="dot"></div>
-                    <div className="timeline-content">
-                      <h4>Diploma in Computer Engineering</h4>
-                      <span>MSBTE • Gondia, India</span>
-                      <p>2021 - 2024</p>
-                    </div>
-                  </div>
-                  <div className="timeline-item">
-                    <div className="dot"></div>
-                    <div className="timeline-content">
-                      <h4>Bachelor of Technology (CSE)</h4>
-                      <span>Pune University • Pune, India</span>
-                      <p>2024 - 2027</p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
