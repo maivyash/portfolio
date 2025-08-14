@@ -245,100 +245,145 @@ function App() {
         </SectionWrapper>
 
         <SectionWrapper>
-          <section id="about" className="about-container">
-            <div className="about-left">
-              <img src={profileImage} alt="Yash Gupta" className="avatar" />
-              <h2>Yash Gupta</h2>
-              <p className="subtitle">Aspiring Software Engineer</p>
-              <div className="social-icons">
-                <FaLinkedin
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://www.linkedin.com/in/maivyash/");
-                  }}
-                />
-                <FaGithub
-                  size={"1.7rem"}
-                  onClick={() => {
-                    window.open("https://github.com/maivyash");
-                  }}
-                />
-              </div>
+          <section id="about" className="about-container enhanced-about">
+            <div className="about-header">
+              <h2 className="section-title">About Me</h2>
+              <p className="section-subtitle">
+                Passionate developer crafting digital experiences across the full stack
+              </p>
             </div>
 
-            <div className="about-right">
-              <div className="card">
-                <h3>About Me</h3>
-                <p>
-                  I'm a computer science student passionate about creating
-                  impactful software. I enjoy working across the stack—from
-                  frontend interfaces to backend logic and cloud deployment.
-                  <br />
-                  <br />
-                  I’ve worked with tools, frameworks, and platforms across Web,
-                  Mobile, Marketing, Cloud, and DevOps.
-                </p>
-              </div>
+            <div className="about-content">
+              <div className="about-left enhanced-about-left">
+                <div className="avatar-wrap">
+                  <img src={profileImage} alt="Yash Gupta" className="avatar" />
+                  <span className="avatar-ring" />
+                  <span className="avatar-glow" />
+                </div>
+                <h2>Yash Gupta</h2>
+                <p className="subtitle">Aspiring Software Engineer</p>
+                
+                <div className="about-badges">
+                  <span className="badge">Full Stack</span>
+                  <span className="badge">Mobile Dev</span>
+                  <span className="badge">Cloud Native</span>
+                </div>
 
-              <div className="card">
-                <h3>Skills</h3>
-                <div className="skills-grid">
-                  <div>
-                    <h4>Languages & Frameworks</h4>
-                    <p>
-                      Python, JavaScript, TypeScript, Dart, Go, PHP, .NET,
-                      ReactJS, NextJS, Flutter, NodeJS, jQuery
-                    </p>
+                <div className="about-stats">
+                  <div className="stat">
+                    <span className="num">2</span>
+                    <span className="label">Hackathons</span>
                   </div>
-                  <div>
-                    <h4>Tools & SDKs</h4>
-                    <p>
-                      GitHub, Firebase, Shopify, WordPress, Agora, HubSpot,
-                      Zeplin, Figma, Postman, Slack, Trello, ClickUp, Zoho CRM,
-                      Zendesk
-                    </p>
+                  <div className="stat">
+                    <span className="num">8+</span>
+                    <span className="label">Projects</span>
                   </div>
-                  <div>
-                    <h4>DevOps & Cloud</h4>
-                    <p>
-                      Docker, Kubernetes, Nginx, DNS, CI/CD, AWS, Google Cloud,
-                      Azure, Vercel, Netlify, Heroku, Cloudflare
-                    </p>
+                  <div className="stat">
+                    <span className="num">10+</span>
+                    <span className="label">Technologies</span>
                   </div>
-                  <div>
-                    <h4>Marketing & Analytics</h4>
-                    <p>
-                      Google Ads, Analytics, Trends, Data Studio, GoHighLevel,
-                      SEM Rush, Meta Ads, SEO, SEM, Social Media Marketing
-                    </p>
-                  </div>
-                  <div>
-                    <h4>Project Management</h4>
-                    <p>Jira, Asana, Miro</p>
-                  </div>
+                </div>
+
+                <div className="social-icons">
+                  <FaLinkedin
+                    size={"1.7rem"}
+                    onClick={() => {
+                      window.open("https://www.linkedin.com/in/maivyash/");
+                    }}
+                  />
+                  <FaGithub
+                    size={"1.7rem"}
+                    onClick={() => {
+                      window.open("https://github.com/maivyash");
+                    }}
+                  />
                 </div>
               </div>
 
-              <div className="card">
-                <h3>Education</h3>
-                <div className="education-tree">
-                  <div className="tree-line"></div>
-                  {educationData.map((edu, idx) => (
-                    <div
-                      className={`tree-node ${idx % 2 === 0 ? "left" : "right"}`}
-                      key={edu.title}
-                      style={{ animationDelay: `${0.2 + idx * 0.2}s` }}
-                    >
-                      <div className="tree-node-content">
-                        <div className="tree-icon">{edu.icon}</div>
-                        <div className="tree-text">
-                          <h4>{edu.title}</h4>
-                          <span>{edu.place}</span>
-                          <p>{edu.period}</p>
-                        </div>
+              <div className="about-right enhanced-about-right">
+                <div className="card about-card">
+                  <div className="card-header">
+                    <h3>My Journey</h3>
+                    <div className="card-icon">🚀</div>
+                  </div>
+                  <p>
+                    I'm a computer science student passionate about creating
+                    impactful software. I enjoy working across the stack—from
+                    frontend interfaces to backend logic and cloud deployment.
+                    <br />
+                    <br />
+                    I've worked with tools, frameworks, and platforms across Web,
+                    Mobile, Marketing, Cloud, and DevOps.
+                  </p>
+                </div>
+
+                <div className="card skills-card">
+                  <div className="card-header">
+                    <h3>Technical Skills</h3>
+                    <div className="card-icon">⚡</div>
+                  </div>
+                  <div className="skills-grid">
+                    <div className="skill-category">
+                      <h4>Languages & Frameworks</h4>
+                      <div className="skill-tags">
+                        <span className="tag">Python</span>
+                        <span className="tag">JavaScript</span>
+                        <span className="tag">TypeScript</span>
+                        <span className="tag">Dart</span>
+                        <span className="tag">React</span>
+                        <span className="tag">Next.js</span>
+                        <span className="tag">Flutter</span>
+                        <span className="tag">Node.js</span>
                       </div>
                     </div>
-                  ))}
+                    <div className="skill-category">
+                      <h4>Tools & Platforms</h4>
+                      <div className="skill-tags">
+                        <span className="tag">GitHub</span>
+                        <span className="tag">Firebase</span>
+                        <span className="tag">Docker</span>
+                        <span className="tag">AWS</span>
+                        <span className="tag">Figma</span>
+                        <span className="tag">Postman</span>
+                      </div>
+                    </div>
+                    <div className="skill-category">
+                      <h4>DevOps & Cloud</h4>
+                      <div className="skill-tags">
+                        <span className="tag">CI/CD</span>
+                        <span className="tag">Kubernetes</span>
+                        <span className="tag">Nginx</span>
+                        <span className="tag">Vercel</span>
+                        <span className="tag">Netlify</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card education-card">
+                  <div className="card-header">
+                    <h3>Education Path</h3>
+                    <div className="card-icon">🎓</div>
+                  </div>
+                  <div className="education-tree">
+                    <div className="tree-line"></div>
+                    {educationData.map((edu, idx) => (
+                      <div
+                        className={`tree-node ${idx % 2 === 0 ? "left" : "right"}`}
+                        key={edu.title}
+                        style={{ animationDelay: `${0.2 + idx * 0.2}s` }}
+                      >
+                        <div className="tree-node-content">
+                          <div className="tree-icon">{edu.icon}</div>
+                          <div className="tree-text">
+                            <h4>{edu.title}</h4>
+                            <span>{edu.place}</span>
+                            <p>{edu.period}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
