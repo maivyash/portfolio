@@ -14,7 +14,7 @@ import ppthandlerprojectimagefrom from "./asset/ppthandler.png";
 import healthhubprojectimagefrom from "./asset/healthhubss.png";
 import collegesurferprojectimagefrom from "./asset/collegesurfer.png";
 import Dock from "./tools/Dock";
-import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope, FaGraduationCap, FaSchool, FaUniversity } from "react-icons/fa";
+import { FaHome, FaUser, FaCode, FaTasks, FaEnvelope, FaGraduationCap, FaSchool, FaUniversity, FaRegCommentDots, FaPaperPlane, FaMapMarkerAlt, FaPhone, FaClock, FaWhatsapp, FaExternalLinkAlt } from "react-icons/fa";
 import { useRef, useState } from "react";
 import useInView from "./tools/useInView";
 // import { IconCloud } from "./tools/logoCloud";
@@ -151,14 +151,6 @@ function App() {
         document.getElementById("about").scrollIntoView({ behavior: "smooth" }),
     },
     {
-      icon: <FaCode size={24} />,
-      label: "Skills",
-      onClick: () =>
-        document
-          .getElementById("skills")
-          .scrollIntoView({ behavior: "smooth" }),
-    },
-    {
       icon: <FaTasks size={24} />,
       label: "Projects",
       onClick: () =>
@@ -173,6 +165,38 @@ function App() {
         document
           .getElementById("contact")
           .scrollIntoView({ behavior: "smooth" }),
+    },
+  ];
+  const projectsData = [
+    {
+      title: "HealthHub",
+      description:
+        "A full-stack AI powered website with medical report tracking, doctor booking, and AI assistant integration.",
+      image: healthhubprojectimagefrom,
+      source: "https://github.com/maivyash/healthhub",
+      demo: "https://healthhub-zeta.vercel.app/",
+      category: "Web App",
+      tech: ["Next.js", "Tailwind", "Prisma", "PostgreSQL", "OpenAI"],
+    },
+    {
+      title: "PPT Handler",
+      description:
+        "AI-based gesture recognition tool that lets you control PowerPoint presentations hands-free.",
+      image: ppthandlerprojectimagefrom,
+      source: "https://github.com/maivyash/PPT_HANDLER",
+      demo: null,
+      category: "Tool",
+      tech: ["Python", "OpenCV", "MediaPipe"],
+    },
+    {
+      title: "CollegeSurfer",
+      description:
+        "Mobile app for managing college operations — attendance, assignments, profiles, and notices.",
+      image: collegesurferprojectimagefrom,
+      source: "https://github.com/maivyash/CollegeSurfer",
+      demo: null,
+      category: "Mobile App",
+      tech: ["Flutter", "Firebase"],
     },
   ];
 
@@ -330,48 +354,47 @@ function App() {
             </p>
 
             <div className="project-card-grid">
-              {[
-                {
-                  title: "HealthHub",
-                  description:
-                    "A full-stack AI powered website with medical report tracking, doctor booking, and AI assistant integration.",
-                  image: healthhubprojectimagefrom,
-                  source: "https://github.com/maivyash/healthhub",
-                  demo: "https://healthhub-zeta.vercel.app/",
-                },
-                {
-                  title: "PPT Handler",
-                  description:
-                    "AI-based gesture recognition tool that lets you control PowerPoint presentations hands-free.",
-                  image: ppthandlerprojectimagefrom,
-                  source: "https://github.com/maivyash/PPT_HANDLER",
-                  demo: null,
-                },
-                {
-                  title: "CollegeSurfer",
-                  description:
-                    "Mobile app for managing college operations — attendance, assignments, profiles, and notices.",
-                  image: collegesurferprojectimagefrom,
-                  source: "https://github.com/maivyash/CollegeSurfer",
-                  demo: null,
-                },
-              ].map((project) => (
+              {projectsData.map((project) => (
                 <div className="project-card" key={project.title}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="project-img"
-                  />
+                  <div className="project-badge">{project.category}</div>
+                  <div className="project-media">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="project-img"
+                    />
+                  </div>
                   <div className="project-info">
                     <h3>{project.title}</h3>
                     <p>{project.description}</p>
-                    <div className="project-links">
-                      <a href={project.source} target="_blank" rel="noreferrer">
-                        Source Code
+                    {project.tech && (
+                      <div className="project-tags">
+                        {project.tech.map((t) => (
+                          <span className="tag" key={`${project.title}-${t}`}>{t}</span>
+                        ))}
+                      </div>
+                    )}
+                    <div className="project-actions">
+                      <a
+                        className="project-btn"
+                        href={project.source}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${project.title} source code`}
+                      >
+                        <FaGithub />
+                        <span>Source</span>
                       </a>
                       {project.demo != null ? (
-                        <a href={project.demo} target="_blank" rel="noreferrer">
-                          Demo
+                        <a
+                          className="project-btn primary"
+                          href={project.demo}
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={`${project.title} live demo`}
+                        >
+                          <FaExternalLinkAlt />
+                          <span>Demo</span>
                         </a>
                       ) : (
                         false
@@ -414,13 +437,23 @@ function App() {
         </SectionWrapper>
 
         <div>
-          <section id="contact" className="contact">
+          <section id="contact" className="contact contact-enhanced">
             <h2>Get In Touch</h2>
             <div className="contact-content">
-              <div className="contact-info">
-                <p>Email: guptayash2005.yg@gmail.com</p>
-                <p>Phone: +91 8767339461</p>
-                <p>Location: Pune, India</p>
+              <div className="contact-info card contact-info-card">
+                <div className="contact-badges">
+                  <span className="badge"><FaClock size={14} /> Typically replies within 24 hrs</span>
+                  <span className="badge"><FaMapMarkerAlt size={14} /> Pune, India</span>
+                </div>
+                <div className="contact-details">
+                  <div className="detail"><FaEnvelope /> <span>Email:</span> <a href="mailto:guptayash2005.yg@gmail.com">guptayash2005.yg@gmail.com</a></div>
+                  <div className="detail"><FaPhone /> <span>Phone:</span> <a href="tel:+918767339461">+91 8767339461</a></div>
+                </div>
+                <div className="contact-chips">
+                  <a href="mailto:guptayash2005.yg@gmail.com" className="chip"><FaEnvelope /> Email me</a>
+                  <a href="tel:+918767339461" className="chip"><FaPhone /> Call me</a>
+                  <a href="https://wa.me/918767339461" target="_blank" rel="noreferrer" className="chip"><FaWhatsapp /> WhatsApp</a>
+                </div>
                 <div className="social-icons">
                   <FaLinkedin
                     size={"1.7rem"}
@@ -438,7 +471,7 @@ function App() {
               </div>
               <form 
                 onSubmit={handleSubmit} 
-                className="contact-form" 
+                className="contact-form card contact-form-card" 
                 noValidate
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' && e.target.type !== 'textarea') {
@@ -446,41 +479,59 @@ function App() {
                   }
                 }}
               >
-                <label>
-                  Name:
-                  <input
-                    type="text"
-                    name="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </label>
+                <div className="form-field">
+                  <span className="label-text">Name</span>
+                  <div className="input-with-icon">
+                    <span className="icon"><FaUser /></span>
+                    <input
+                      type="text"
+                      name="name"
+                      required
+                      placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
 
-                <label>
-                  Email:
-                  <input
-                    type="email"
-                    name="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </label>
+                <div className="form-field">
+                  <span className="label-text">Email</span>
+                  <div className="input-with-icon">
+                    <span className="icon"><FaEnvelope /></span>
+                    <input
+                      type="email"
+                      name="email"
+                      required
+                      placeholder="you@example.com"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
 
-                <label>
-                  Message:
-                  <textarea
-                    name="message"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </label>
+                <div className="form-field">
+                  <span className="label-text">Message</span>
+                  <div className="input-with-icon textarea">
+                    <span className="icon"><FaRegCommentDots /></span>
+                    <textarea
+                      name="message"
+                      required
+                      placeholder="Tell me about your project, role, or say hello..."
+                      value={formData.message}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
 
-                <button type="submit">Send</button>
+                <button type="submit" className={`btn-submit ${status === "Sending..." ? "loading" : ""}`}>
+                  <span className="plane"><FaPaperPlane /></span>
+                  <span>Send message</span>
+                  <span className="spinner" />
+                </button>
 
-                <p>{status}</p>
+                <div className={`status-toast ${status ? "show" : ""} ${status.toLowerCase().includes("success") ? "success" : (status.toLowerCase().includes("failed") || status.toLowerCase().includes("error")) ? "error" : "info"}`}>
+                  {status}
+                </div>
               </form>
             </div>
           </section>
