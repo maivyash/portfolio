@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash Gupta | Full Stack Developer & AI Enthusiast</title>
+    <meta name="description"
+        content="Portfolio of Yash Gupta - Full Stack Developer, AI Enthusiast, and System Designer. CSE '27 with expertise in Java, Python, MERN, Android, and Machine Learning.">
+    <meta name="keywords"
+        content="Yash Gupta, Full Stack Developer, Portfolio, AI, Machine Learning, MERN, Java, Android Developer">
+    <meta name="author" content="Yash Gupta">
+
+    <!-- Google Fonts - Techy Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Scan Line Overlay -->
+    <div class="scan-lines"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <div class="preloader-ring"></div>
+            <span class="preloader-text">INITIALIZING<span class="dots">...</span></span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>YG<span class="logo-bracket">/&gt;</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+                <li><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+                <li><a href="#experience" class="nav-link" data-text="Experience">Experience</a></li>
+                <li><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+                <li><a href="#education" class="nav-link" data-text="Education">Education</a></li>
+                <li><a href="#achievements" class="nav-link" data-text="Achievements">Achievements</a></li>
+                <li><a href="#contact" class="nav-link nav-link-cta" data-text="Contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <canvas id="heroCanvas"></canvas>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge" style="margin-top: 7vh;">
+                <span class="badge-dot"></span>
+                <span >Available for Opportunities</span>
+            </div>
+            <h1 class="hero-name glitch" data-text="YASH GUPTA">
+                <span class="hero-name-line">YASH</span>
+                <span class="hero-name-line accent">GUPTA</span>
+            </h1>
+            <div class="hero-title-wrapper">
+                <span class="hero-title-prefix">&gt;&gt;</span>
+                <span class="typed-text" id="typedText"></span>
+                <span class="cursor-blink">|</span>
+            </div>
+            <p class="hero-tagline">Crafting digital experiences with code, AI & innovation</p>
+            <div class="hero-cta-group">
+                <a href="#projects" class="btn btn-primary">
+                    <span class="btn-text">View My Work</span>
+                    <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+                    <div class="btn-glow"></div>
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <span class="btn-text">Get In Touch</span>
+                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                </a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="17">0</span>
+                    <span class="stat-label">Repositories</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="2">0</span>
+                    <span class="stat-label">Internships</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="6">0</span>
+                    <span class="stat-label">Competitions</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+        <div class="hero-corner top-left"></div>
+        <div class="hero-corner top-right"></div>
+        <div class="hero-corner bottom-left"></div>
+        <div class="hero-corner bottom-right"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">About <span class="accent">Me</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="about-grid">
+                <div class="about-visual reveal-left">
+                    <div class="about-image-wrapper">
+                        <div class="about-avatar">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-inner">
+                                <i class="fas fa-terminal avatar-icon"></i>
+                            </div>
+                            <div class="avatar-orbit">
+                                <div class="orbit-dot" style="--delay: 0s;"><i class="fab fa-java"></i></div>
+                                <div class="orbit-dot" style="--delay: 1s;"><i class="fab fa-python"></i></div>
+                                <div class="orbit-dot" style="--delay: 2s;"><i class="fab fa-react"></i></div>
+                                <div class="orbit-dot" style="--delay: 3s;"><i class="fab fa-node-js"></i></div>
+                            </div>
+                        </div>
+                        <div class="code-snippet-float">
+                            <pre><code><span class="code-keyword">const</span> yash = {
+  <span class="code-key">role</span>: <span class="code-string">"Full Stack Dev"</span>,
+  <span class="code-key">passion</span>: <span class="code-string">"AI & Innovation"</span>,
+  <span class="code-key">goal</span>: <span class="code-string">"Build Impact"</span>
+};</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content reveal-right">
+                    <div class="about-text-card glass-card">
+                        <h3 class="about-subtitle">
+                            <i class="fas fa-code"></i>
+                            Hello, World!
+                        </h3>
+                        <p>I'm <strong>Yash Gupta</strong>, a passionate Computer Science Engineering student (CSE '27)
+                            from <strong>Pune, Maharashtra</strong>. I specialize in building end-to-end applications —
+                            from robust backends to intelligent AI systems.</p>
+                        <p>With experience spanning <strong>full-stack web development</strong>, <strong>Android
+                                development</strong>, <strong>system design</strong>, and <strong>machine
+                                learning</strong>, I love transforming complex problems into elegant solutions. My
+                            journey includes internships at Info-Origin and Syntonix (Washington US), hackathon
+                            victories, and multiple competition wins.</p>
+                        <p>Currently pursuing my B.E. in CSE at <strong>Siddhant College of Engineering</strong>
+                            (Affiliated to Savitribai Phule Pune University) with an <strong>8.50 CGPA</strong>, I'm on
+                            a mission to build technology that creates real impact.</p>
+                        <div class="about-quick-info">
+                            <div class="info-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Pune, Maharashtra</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>CSE '27</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-laptop-code"></i>
+                                <span>Full Stack + AI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Tech <span class="accent">Arsenal</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="skills-content">
+                <!-- Programming Languages -->
+                <div class="skill-category reveal-up">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Programming Languages
+                    </h3>
+                    <div class="skill-hex-grid">
+                        <div class="hex-item" data-skill="Java">
+                            <div class="hex-inner">
+                                <i class="fab fa-java"></i>
+                                <span>Java</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Python">
+                            <div class="hex-inner">
+                                <i class="fab fa-python"></i>
+                                <span>Python</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="C++">
+                            <div class="hex-inner">
+                                <i class="fas fa-code"></i>
+                                <span>C++</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="C">
+                            <div class="hex-inner">
+                                <i class="fas fa-copyright"></i>
+                                <span>C</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="JavaScript">
+                            <div class="hex-inner">
+                                <i class="fab fa-js-square"></i>
+                                <span>JavaScript</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="SQL">
+                            <div class="hex-inner">
+                                <i class="fas fa-database"></i>
+                                <span>SQL</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="C#">
+                            <div class="hex-inner">
+                                <i class="fas fa-hashtag"></i>
+                                <span>C#</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frameworks & Tools -->
+                <div class="skill-category reveal-up">
+                    <h3 class="category-title">
+                        <i class="fas fa-layer-group"></i>
+                        Frameworks & Tools
+                    </h3>
+                    <div class="skill-hex-grid">
+                        <div class="hex-item" data-skill="React">
+                            <div class="hex-inner">
+                                <i class="fab fa-react"></i>
+                                <span>React</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Node.js">
+                            <div class="hex-inner">
+                                <i class="fab fa-node-js"></i>
+                                <span>Node.js</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Android">
+                            <div class="hex-inner">
+                                <i class="fab fa-android"></i>
+                                <span>Android</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="React Native">
+                            <div class="hex-inner">
+                                <i class="fab fa-react"></i>
+                                <span>React Native</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Firebase">
+                            <div class="hex-inner">
+                                <i class="fas fa-fire"></i>
+                                <span>Firebase</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="REST API">
+                            <div class="hex-inner">
+                                <i class="fas fa-plug"></i>
+                                <span>REST API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DevOps & Cloud -->
+                <div class="skill-category reveal-up">
+                    <h3 class="category-title">
+                        <i class="fas fa-cloud"></i>
+                        DevOps & Cloud
+                    </h3>
+                    <div class="skill-hex-grid">
+                        <div class="hex-item" data-skill="Docker">
+                            <div class="hex-inner">
+                                <i class="fab fa-docker"></i>
+                                <span>Docker</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="AWS">
+                            <div class="hex-inner">
+                                <i class="fab fa-aws"></i>
+                                <span>AWS</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Jenkins">
+                            <div class="hex-inner">
+                                <i class="fab fa-jenkins"></i>
+                                <span>Jenkins</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="GitHub Actions">
+                            <div class="hex-inner">
+                                <i class="fab fa-github"></i>
+                                <span>CI/CD</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Kubernetes">
+                            <div class="hex-inner">
+                                <i class="fas fa-dharmachakra"></i>
+                                <span>Kubernetes</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Linux">
+                            <div class="hex-inner">
+                                <i class="fab fa-linux"></i>
+                                <span>Linux</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ML & AI -->
+                <div class="skill-category reveal-up">
+                    <h3 class="category-title">
+                        <i class="fas fa-brain"></i>
+                        Machine Learning & AI
+                    </h3>
+                    <div class="skill-hex-grid">
+                        <div class="hex-item" data-skill="TensorFlow">
+                            <div class="hex-inner">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>TensorFlow</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="PyTorch">
+                            <div class="hex-inner">
+                                <i class="fas fa-fire-alt"></i>
+                                <span>PyTorch</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="OpenCV">
+                            <div class="hex-inner">
+                                <i class="fas fa-eye"></i>
+                                <span>OpenCV</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="NumPy">
+                            <div class="hex-inner">
+                                <i class="fas fa-calculator"></i>
+                                <span>NumPy</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="Pandas">
+                            <div class="hex-inner">
+                                <i class="fas fa-table"></i>
+                                <span>Pandas</span>
+                            </div>
+                        </div>
+                        <div class="hex-item" data-skill="CNN/RNN">
+                            <div class="hex-inner">
+                                <i class="fas fa-network-wired"></i>
+                                <span>CNN/RNN</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section experience" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Work <span class="accent">Experience</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item reveal-left">
+                    <div class="timeline-marker">
+                        <div class="marker-pulse"></div>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div class="timeline-company">
+                                <h3>System Design Intern</h3>
+                                <span class="company-name">
+                                    <i class="fas fa-building"></i>
+                                    Syntonix, Washington US
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                Dec 2025 - Feb 2026
+                            </span>
+                        </div>
+                        <p class="timeline-description">
+                            Developing an anonymous hospital feedback system using QR-based authentication, secure data
+                            routing, and a MERN-stack backend to capture, validate, and analyze patient reviews with
+                            real-time dashboards.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">MERN Stack</span>
+                            <span class="tag">System Design</span>
+                            <span class="tag">QR Auth</span>
+                            <span class="tag">Real-time Dashboards</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item reveal-right">
+                    <div class="timeline-marker">
+                        <div class="marker-pulse"></div>
+                    </div>
+                    <div class="timeline-content glass-card">
+                        <div class="timeline-header">
+                            <div class="timeline-company">
+                                <h3>Java Backend Intern</h3>
+                                <span class="company-name">
+                                    <i class="fas fa-building"></i>
+                                    Info-Origin, Gondia, Maharashtra
+                                </span>
+                            </div>
+                            <span class="timeline-date">
+                                <i class="fas fa-calendar-alt"></i>
+                                May 2024 - June 2024
+                            </span>
+                        </div>
+                        <p class="timeline-description">
+                            Worked as an assistant backend developer, gaining expertise in Java core, database
+                            connectivity, and end-to-end user-based product development. Applied various DSA algorithms
+                            in real-life working applications.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Java Core</span>
+                            <span class="tag">Database</span>
+                            <span class="tag">DSA</span>
+                            <span class="tag">Backend Development</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="project-number">01</div>
+                        </div>
+                        <h3 class="project-title">CollegeSurfer</h3>
+                        <p class="project-subtitle">Android College Management App</p>
+                        <p class="project-description">
+                            An Android application containing all features required in any college — attendance, events,
+                            exam time-interval, results, hostel admissions, library management, student & staff records.
+                            Currently in production at Government Polytechnic, Gondia.
+                        </p>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>XML</span>
+                            <span>Firebase</span>
+                            <span>Android</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash/CollegeSurfer" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <div class="project-stars">
+                                <i class="fas fa-star"></i> 2
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <div class="project-number">02</div>
+                        </div>
+                        <h3 class="project-title">MedicalMate v1.0.0</h3>
+                        <p class="project-subtitle">AI Medical Platform</p>
+                        <p class="project-description">
+                            Your Lifetime Medical Companion — built on MERN with secure PDF analysis and CNN/RNN-based
+                            health-data extraction. Features a scalable, role-based system with encrypted files and
+                            personalized insights.
+                        </p>
+                        <div class="project-tech">
+                            <span>MERN</span>
+                            <span>CNN/RNN</span>
+                            <span>AI/ML</span>
+                            <span>PDF Analysis</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-cloud-sun-rain"></i>
+                            </div>
+                            <div class="project-number">03</div>
+                        </div>
+                        <h3 class="project-title">Weather Forecasting App</h3>
+                        <p class="project-subtitle">72Hr Hackathon Winner 🏆</p>
+                        <p class="project-description">
+                            Award-winning weather forecasting application built during Code Rangers 72-hour hackathon.
+                            Won First Place with the "72Hours. One Idea." challenge, demonstrating rapid development and
+                            innovative problem-solving skills.
+                        </p>
+                        <div class="project-tech">
+                            <span>Full Stack</span>
+                            <span>API Integration</span>
+                            <span>Data Visualization</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <div class="project-stars">
+                                <i class="fas fa-trophy"></i> Winner
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="project-number">04</div>
+                        </div>
+                        <h3 class="project-title">HomeServiceFinder</h3>
+                        <p class="project-subtitle">Service Discovery Platform</p>
+                        <p class="project-description">
+                            A comprehensive platform connecting homeowners with trusted service providers. Features
+                            real-time availability, reviews, booking system, and location-based service discovery.
+                        </p>
+                        <div class="project-tech">
+                            <span>Web App</span>
+                            <span>Full Stack</span>
+                            <span>Location API</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash/homeservicefinder" target="_blank"
+                                class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <div class="project-stars">
+                                <i class="fas fa-star"></i> 1
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <div class="project-number">05</div>
+                        </div>
+                        <h3 class="project-title">HealthHub</h3>
+                        <p class="project-subtitle">Healthcare Management System</p>
+                        <p class="project-description">
+                            A comprehensive healthcare management system designed to streamline medical operations,
+                            patient records management, and healthcare service delivery through modern web technologies.
+                        </p>
+                        <div class="project-tech">
+                            <span>JavaScript</span>
+                            <span>Healthcare</span>
+                            <span>Full Stack</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash/healthhub" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <div class="project-stars">
+                                <i class="fas fa-star"></i> 1
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="project-card glass-card reveal-up" data-tilt>
+                    <div class="project-card-inner">
+                        <div class="project-icon-wrapper">
+                            <div class="project-icon">
+                                <i class="fas fa-file-powerpoint"></i>
+                            </div>
+                            <div class="project-number">06</div>
+                        </div>
+                        <h3 class="project-title">PPT Handler</h3>
+                        <p class="project-subtitle">Presentation Automation Tool</p>
+                        <p class="project-description">
+                            A Python-powered tool for automated presentation handling and processing. Streamlines
+                            workflow by automating repetitive tasks in PowerPoint file management.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>Automation</span>
+                            <span>File Processing</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/maivyash/PPT_HANDLER" target="_blank" class="project-link">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <div class="project-stars">
+                                <i class="fas fa-star"></i> 1
+                            </div>
+                        </div>
+                        <div class="project-glow"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="projects-cta reveal-up">
+                <a href="https://github.com/maivyash" target="_blank" class="btn btn-outline">
+                    <span class="btn-text">View All on GitHub</span>
+                    <span class="btn-icon"><i class="fab fa-github"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="section education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">05</span>
+                <h2 class="section-title">Education <span class="accent">Journey</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="education-grid">
+                <div class="edu-card glass-card reveal-up">
+                    <div class="edu-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="edu-status active">Currently Pursuing</div>
+                    <h3 class="edu-degree">B.E. Computer Science & Engineering</h3>
+                    <p class="edu-institution">
+                        <i class="fas fa-university"></i>
+                        Siddhant College of Engineering, Pune
+                    </p>
+                    <p class="edu-affiliation">Affiliated by Savitribai Phule Pune University</p>
+                    <div class="edu-details">
+                        <span class="edu-score">
+                            <i class="fas fa-chart-line"></i>
+                            8.50 CGPA (4th Semester)
+                        </span>
+                        <span class="edu-year">
+                            <i class="fas fa-calendar"></i>
+                            Expected May 2027
+                        </span>
+                    </div>
+                    <div class="edu-glow"></div>
+                </div>
+
+                <div class="edu-card glass-card reveal-up">
+                    <div class="edu-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="edu-status completed">Completed</div>
+                    <h3 class="edu-degree">Diploma in Computer Science</h3>
+                    <p class="edu-institution">
+                        <i class="fas fa-university"></i>
+                        Government Polytechnic, Gondia
+                    </p>
+                    <p class="edu-affiliation">Maharashtra State Board of Technical Education</p>
+                    <div class="edu-details">
+                        <span class="edu-score">
+                            <i class="fas fa-chart-line"></i>
+                            84.64% Aggregate
+                        </span>
+                        <span class="edu-year">
+                            <i class="fas fa-calendar"></i>
+                            May 2024
+                        </span>
+                    </div>
+                    <div class="edu-glow"></div>
+                </div>
+
+                <div class="edu-card glass-card reveal-up">
+                    <div class="edu-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="edu-status completed">Completed</div>
+                    <h3 class="edu-degree">Higher Secondary (PCM)</h3>
+                    <p class="edu-institution">
+                        <i class="fas fa-university"></i>
+                        M.S. Jain English School, Jalna
+                    </p>
+                    <div class="edu-details">
+                        <span class="edu-score">
+                            <i class="fas fa-chart-line"></i>
+                            80.20%
+                        </span>
+                        <span class="edu-year">
+                            <i class="fas fa-calendar"></i>
+                            May 2021
+                        </span>
+                    </div>
+                    <div class="edu-glow"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="section achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">06</span>
+                <h2 class="section-title">Achievements <span class="accent">& Awards</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon trophy">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>72Hr Hackathon Winner</h3>
+                    <p>Code Rangers Hackathon — "72Hours. One Idea." First Place on Weather Forecasting App</p>
+                    <span class="achievement-date">Sept 2025</span>
+                    <div class="achievement-particles"></div>
+                </div>
+
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon medal">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>National 2nd Place</h3>
+                    <p>National Level Technical Project Competition @Government Polytechnic Gondia for Android project
+                        "CollegeSpace"</p>
+                    <span class="achievement-date">March 2024</span>
+                    <div class="achievement-particles"></div>
+                </div>
+
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon rank">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Ranked 3rd — Entrepreneurship</h3>
+                    <p>Gondia Entrepreneurship Conclave — Showcasing innovative ideas and entrepreneurial skills</p>
+                    <span class="achievement-date">Nov 2023</span>
+                    <div class="achievement-particles"></div>
+                </div>
+
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon rank">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>3rd Rank — Codex Competition</h3>
+                    <p>Codex Project Competition — Secured 3rd Rank and Certification of Appreciation</p>
+                    <span class="achievement-date">Jan 2024</span>
+                    <div class="achievement-particles"></div>
+                </div>
+
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon quiz">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>3rd Place — Tech Quiz</h3>
+                    <p>State Level Technical Quiz Competition @Sir M. S. Gosavi Polytechnic Institute Nashik</p>
+                    <span class="achievement-date">Feb 2024</span>
+                    <div class="achievement-particles"></div>
+                </div>
+
+                <div class="achievement-card glass-card reveal-up">
+                    <div class="achievement-icon cert">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>ABVP Mumbai — Dipex</h3>
+                    <p>Certification of Appreciation from ABVP Mumbai for outstanding contributions</p>
+                    <span class="achievement-date">March 2024</span>
+                    <div class="achievement-particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">07</span>
+                <h2 class="section-title">Get In <span class="accent">Touch</span></h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info reveal-left">
+                    <h3 class="contact-subtitle">Let's Build Something Amazing</h3>
+                    <p class="contact-text">I'm always open to new opportunities, collaborations, and interesting
+                        projects. Whether you have a question or just want to say hello, feel free to reach out!</p>
+
+                    <div class="contact-cards">
+                        <a href="mailto:guptayash2005.yg@gmail.com" class="contact-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Email</span>
+                                <span class="contact-card-value">guptayash2005.yg@gmail.com</span>
+                            </div>
+                        </a>
+                        <a href="tel:+918767339461" class="contact-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Phone</span>
+                                <span class="contact-card-value">+91 8767339461</span>
+                            </div>
+                        </a>
+                        <div class="contact-card glass-card">
+                            <div class="contact-card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Location</span>
+                                <span class="contact-card-value">Pune, Maharashtra, India</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://github.com/maivyash" target="_blank" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:guptayash2005.yg@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="tel:+918767339461" class="social-link" aria-label="Phone">
+                            <i class="fas fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrapper reveal-right">
+                    <form class="contact-form glass-card" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">
+                                <i class="fas fa-user"></i> Your Name
+                            </label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required placeholder=" ">
+                            <label for="email">
+                                <i class="fas fa-envelope"></i> Your Email
+                            </label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" required placeholder=" ">
+                            <label for="subject">
+                                <i class="fas fa-tag"></i> Subject
+                            </label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="4" required placeholder=" "></textarea>
+                            <label for="message">
+                                <i class="fas fa-comment-dots"></i> Message
+                            </label>
+                            <div class="form-line"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span class="btn-text">Send Message</span>
+                            <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid-bg"></div>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>YG<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-tagline">Designed & Built with <span class="accent"><i class="fas fa-heart"></i></span>
+                    by Yash Gupta</p>
+                <div class="footer-links">
+                    <a href="https://github.com/maivyash" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:guptayash2005.yg@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+                <p class="footer-copyright">&copy; 2025 Yash Gupta. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
